@@ -23,17 +23,17 @@ const DADOS = {
   // Usuários do sistema (com foto/inicial, perfil e master). No go-live: hash no backend.
   _users: [
     { user:"inperson", pass:"inperson", nome:"INPERSON",      inicial:"iP", cor:"#4F97C4", perfil:"master", roleLabel:"Master (INPERSON)", master:true,  ultimoAcesso:"2026-07-12 09:14" },
-    { user:"victor",   pass:"viziofrota",    nome:"Victor Paiva",  inicial:"VP", cor:"#2FBF87", perfil:"admin",  roleLabel:"Proprietário",       master:false, ultimoAcesso:"2026-07-12 08:02" },
+    { user:"demo",   pass:"viziofrota",    nome:"Ricardo Almeida",  inicial:"RA", cor:"#2FBF87", perfil:"admin",  roleLabel:"Proprietário",       master:false, ultimoAcesso:"2026-07-12 08:02" },
     { user:"recepcao", pass:"recepcao", nome:"Recepção",      inicial:"RC", cor:"#E0A93B", perfil:"operacao",roleLabel:"Operação",          master:false, ultimoAcesso:"2026-07-11 17:40" }
   ],
 
   // Registro de acessos (log). Novos logins são adicionados na sessão; master vê tudo.
   _acessos: [
     { data:"2026-07-12", hora:"09:14", user:"inperson", nome:"INPERSON",     acao:"login",    origem:"Web" },
-    { data:"2026-07-12", hora:"08:02", user:"victor",   nome:"Victor Paiva", acao:"login",    origem:"Web" },
+    { data:"2026-07-12", hora:"08:02", user:"demo",   nome:"Ricardo Almeida", acao:"login",    origem:"Web" },
     { data:"2026-07-11", hora:"17:40", user:"recepcao", nome:"Recepção",     acao:"login",    origem:"Web" },
-    { data:"2026-07-11", hora:"12:05", user:"victor",   nome:"Victor Paiva", acao:"bloqueio", origem:"Cobrança V02" },
-    { data:"2026-07-10", hora:"19:22", user:"victor",   nome:"Victor Paiva", acao:"logout",   origem:"Web" }
+    { data:"2026-07-11", hora:"12:05", user:"demo",   nome:"Ricardo Almeida", acao:"bloqueio", origem:"Cobrança V02" },
+    { data:"2026-07-10", hora:"19:22", user:"demo",   nome:"Ricardo Almeida", acao:"logout",   origem:"Web" }
   ],
 
   // ---- NOTIFICAÇÕES (central de alertas) ----
@@ -106,10 +106,10 @@ const DADOS = {
 
   // ---- VISTORIAS ----
   vistorias: [
-    { id:"VS1", veiculoId:"V01", data:"2026-05-02", tipo:"Entrega",   km:76800, combustivel:"1/2", avarias:"Risco leve porta traseira D", fotos:8, responsavel:"Victor Paiva" },
-    { id:"VS2", veiculoId:"V04", data:"2026-03-25", tipo:"Entrega",   km:50100, combustivel:"Cheio", avarias:"Sem avarias", fotos:10, responsavel:"Victor Paiva" },
+    { id:"VS1", veiculoId:"V01", data:"2026-05-02", tipo:"Entrega",   km:76800, combustivel:"1/2", avarias:"Risco leve porta traseira D", fotos:8, responsavel:"Ricardo Almeida" },
+    { id:"VS2", veiculoId:"V04", data:"2026-03-25", tipo:"Entrega",   km:50100, combustivel:"Cheio", avarias:"Sem avarias", fotos:10, responsavel:"Ricardo Almeida" },
     { id:"VS3", veiculoId:"V06", data:"2026-07-05", tipo:"Devolução", km:134200,combustivel:"1/4", avarias:"Retrovisor E trincado", fotos:6, responsavel:"Recepção" },
-    { id:"VS4", veiculoId:"V08", data:"2026-02-14", tipo:"Entrega",   km:85300, combustivel:"Cheio", avarias:"Sem avarias", fotos:9, responsavel:"Victor Paiva" }
+    { id:"VS4", veiculoId:"V08", data:"2026-02-14", tipo:"Entrega",   km:85300, combustivel:"Cheio", avarias:"Sem avarias", fotos:9, responsavel:"Ricardo Almeida" }
   ],
 
   // ---- CONTRATOS (+ caução) ----

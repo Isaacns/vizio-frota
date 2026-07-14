@@ -40,9 +40,20 @@ a{color:inherit;text-decoration:none}
 .hidden{display:none!important}
 .disp{font-weight:600;letter-spacing:.02em}
 
-@keyframes breathe{0%,100%{opacity:.92;filter:drop-shadow(0 0 0 rgba(46,107,255,0))}50%{opacity:1;filter:drop-shadow(0 0 12px rgba(46,107,255,.3))}}
-.breathe{animation:breathe 4.6s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.breathe{animation:none}}
+/* Logo viva: respiracao longa + batimento duplo (sistole/diastole) no fim do ciclo.
+   rgb do acento e' trocado pelo configurador — manter o formato sem espacos. */
+@keyframes breathe{
+  0%   {opacity:.88;transform:scale(1);      filter:drop-shadow(0 0 0 rgba(46,107,255,0))}
+  34%  {opacity:1;  transform:scale(1.028);  filter:drop-shadow(0 0 20px rgba(46,107,255,.5))}
+  58%  {opacity:.93;transform:scale(1.004);  filter:drop-shadow(0 0 8px rgba(46,107,255,.2))}
+  72%  {opacity:1;  transform:scale(1.055);  filter:drop-shadow(0 0 26px rgba(46,107,255,.62))}
+  78%  {opacity:.95;transform:scale(1.006);  filter:drop-shadow(0 0 10px rgba(46,107,255,.24))}
+  85%  {opacity:1;  transform:scale(1.034);  filter:drop-shadow(0 0 18px rgba(46,107,255,.44))}
+  92%  {opacity:.9; transform:scale(1);      filter:drop-shadow(0 0 5px rgba(46,107,255,.12))}
+  100% {opacity:.88;transform:scale(1);      filter:drop-shadow(0 0 0 rgba(46,107,255,0))}
+}
+.breathe{animation:breathe 6.4s cubic-bezier(.4,0,.3,1) infinite;transform-origin:center;will-change:transform,opacity,filter}
+@media(prefers-reduced-motion:reduce){.breathe{animation:none;filter:drop-shadow(0 0 12px rgba(46,107,255,.3))}}
 
 /* Botões — régua única */
 .b,.b-ghost,.b-sm,.b-wa,.b-danger,.b-block{display:inline-flex;align-items:center;justify-content:center;gap:7px;
@@ -241,12 +252,12 @@ main{min-width:0}
 <div id="login">
   <form class="auth-card" onsubmit="doLogin(event)">
     <img src="viziofrota-branca.png" class="logo breathe" id="loginLogo" alt="VIZIO Frota — A inteligência por trás da frota"/>
-    <div class="field"><label>Usuário</label><input id="lgUser" autocomplete="username" placeholder="victor"/></div>
+    <div class="field"><label>Usuário</label><input id="lgUser" autocomplete="username" placeholder="demo"/></div>
     <div class="field"><label>Senha</label><input id="lgPass" type="password" autocomplete="current-password" placeholder="••••••"/></div>
     <div class="err" id="lgErr"></div>
     <button class="b" style="width:100%;height:44px;margin-top:6px" type="submit">Entrar</button>
     <div class="auth-alt">É locatário? <a onclick="showPortalLogin()">Acessar meu portal →</a></div>
-    <div class="auth-hint">Demo: <b>victor / viziofrota</b> · master <b>inperson / inperson</b></div>
+    <div class="auth-hint">Demo: <b>demo / viziofrota</b> · master <b>inperson / inperson</b></div>
   </form>
 </div>
 
