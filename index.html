@@ -933,6 +933,7 @@ function setLogos(){["loginLogo","sideLogo"].forEach(id=>{const e=document.getEl
 <script>
 /* ============================================================================
    VERSÃO DO APP — bumpar a CADA deploy. É por este número que o push compara.
+   Vale para a base (VIZIO Frota) e para toda instância gerada a partir dela.
    ============================================================================ */
 var APP_VERSION = '1.1.0';
 
@@ -944,13 +945,19 @@ var APP_VERSION = '1.1.0';
    aba aberta e o app nunca perguntava se havia versão nova. Publicar não é entregar:
    entregue é quando o código novo roda no navegador dela.
 
-   O Frota não tem service worker (só manifest.json), então aqui existe uma rota só:
-   comparar o APP_VERSION publicado com o que está rodando. Se um dia entrar sw.js,
-   somar a rota do 'updatefound' + skipWaiting (ver VIZIO Money, que é a referência).
+   Por que aqui (na BASE) e não na instância: `instancias/viziofrota` é ARTEFATO
+   GERADO — `gerar-instancia.mjs` reescreve a partir desta base + config. Editar o
+   gerado é trabalho que o próximo publicar-*.bat apaga. Aqui, um lugar só, e toda
+   instância nasce com o push — inclusive as de clientes futuros.
+
+   Cores: `var(--gold)`/`var(--gold-d)` já são por instância. Os fallbacks usam os
+   hexes da base de propósito — o gerador os reescreve com o acento do cliente.
+
+   Este app não tem service worker: a detecção é só por APP_VERSION via rede. Se um
+   dia entrar sw.js, somar a rota do 'updatefound' + skipWaiting (ver VIZIO Money).
 
    Sem guard de document.hidden de propósito: aba em segundo plano é justamente o
-   caso a pegar — foi exatamente assim que a cliente do Ateliê ficou presa na versão
-   antiga. Nunca recarrega sozinho: quem decide a hora é o usuário.
+   caso a pegar. Nunca recarrega sozinho: quem decide a hora é o usuário.
    ============================================================================ */
 (function(){
   var avisou = false, checando = false;
@@ -958,13 +965,14 @@ var APP_VERSION = '1.1.0';
   function avisarNovaVersao(){
     if(avisou) return; avisou = true;
     var b = document.createElement('button');
-    b.type = 'button'; b.id = 'frotaUpdate';
+    b.type = 'button'; b.id = 'vzUpdate';
     b.innerHTML = '✨ Uma versão novinha do sistema está pronta. <b>Atualizar agora</b>';
     b.style.cssText = 'position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(8px);'
       + 'z-index:9999;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;'
       + 'padding:12px 18px;border:none;border-radius:var(--radius,14px);cursor:pointer;'
       + 'font:inherit;font-family:var(--sans,Inter,system-ui,sans-serif);font-size:.9rem;'
-      + 'color:#fff;background:linear-gradient(135deg,var(--gold,#2E6BFF),var(--gold-d,#1E4FCC));'
+      + 'color:var(--ink-btn,#0A0F1E);font-weight:600;'
+      + 'background:linear-gradient(135deg,var(--gold,#2E6BFF),var(--gold-d,#1E4FCC));'
       + 'box-shadow:0 12px 30px -10px rgba(0,0,0,.55);opacity:0;'
       + 'transition:opacity .35s,transform .35s;max-width:92vw';
     b.onclick = function(){
