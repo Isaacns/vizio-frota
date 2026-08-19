@@ -24,6 +24,7 @@
      Nada de CDN aqui: no local vem da pasta, no GitHub Pages vem da raiz do domínio. -->
 <link rel="stylesheet" href="vendor/inter.css"/>
 <script src="vendor/chart.umd.min.js"></script>
+<script src="app-charts-vivo.js?v=1"></script><!-- §20 Gráficos vivos: onda líquida nas barras + crescer nativo (depois do Chart.js, antes dos new Chart) -->
 <script>window.VZ_ACCENT="#2E6BFF";</script>
 <style>
 :root{
@@ -1080,7 +1081,7 @@ function setLogos(){["loginLogo","sideLogo"].forEach(id=>{const e=document.getEl
    VERSÃO DO APP — bumpar a CADA deploy. É por este número que o push compara.
    Vale para a base (VIZIO Frota) e para toda instância gerada a partir dela.
    ============================================================================ */
-window.APP_VERSION = '1.5.0';   /* §14.2: NUNCA const/var — escopo compartilhado entre scripts clássicos */
+window.APP_VERSION = '1.5.1';   /* §14.2: NUNCA const/var — escopo compartilhado entre scripts clássicos */
 
 /* ============================================================================
    PUSH DE ATUALIZAÇÃO — padrão VIZIO §14 (_PADROES-VIZIO-INPERSON.md)
